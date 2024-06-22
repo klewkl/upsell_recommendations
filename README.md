@@ -1,4 +1,4 @@
-## Repository with materail for academic paper "Comparative Analysis of Algorithmic Approaches for Upselling Recommendation Tasks Using Item-Usage History Interaction Data" 
+## Repository with materials for academic paper "Comparative Analysis of Algorithmic Approaches for Upselling Recommendation Tasks Using Item-Usage History Interaction Data" 
 
 
 ### Datasets:
@@ -8,7 +8,7 @@ For the conducted research, three opensourced datasets, which are commonly used 
 - **Dunnhumby** released by Dunnhumby, a business data processing and analysis company. It records more than 2 years of purchases of 2,500 households who are frequent shoppers at a retailer. Full dataset can be found [here](https://www.dunnhumby.com/source-files)
 
 ## Algorithms and models
-For the best NBP task solution, the currenct research contains the foloeing pipelines implementation: 
+For the best WBR task solution, the currenct research contains the following pipelines implementation: 
 - Top-N Reccomendations
 - EASE model
 - PerNIR model
