@@ -12,7 +12,6 @@ For the best WBR task solution, the currenct research contains the following pip
 - Top-N Reccomendations
 - EASE model
 - PerNIR model
-- Light GCN model
 
 
 
