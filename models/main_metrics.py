@@ -62,27 +62,27 @@ def calculate_and_save_ndcg(df):
             df.at[index, f'ndcg@{k}'] = ndcg_value
 
             
-def calculate_precision_recall_top_n_items(df, list_of_top_n):
+def calculate_precision_recall_top_n_items(df, top_n_recommendations):
     for index, row in df.iterrows():
         original_basket = row['original_basket']
         masked_basket = row['masked_basket']
-        preds = list_of_top_n
-        
+        user_id = row['customer_id']
+        preds = top_n_recommendations.get(user_id, [])  
+
         precisions, recalls = precision_recall_at_k(masked_basket, preds, original_basket)
-        
+
         for k, (precision, recall) in enumerate(zip(precisions, recalls), start=1):
             df.at[index, f'precision@{k}'] = precision
             df.at[index, f'recall@{k}'] = recall
-            
 
-def calculate_and_save_ndcg_top_n_items(df, list_of_top_n):
+def calculate_and_save_ndcg_top_n_items(df, top_n_recommendations):
     for index, row in df.iterrows():
         original_basket = row['original_basket']
         masked_basket = row['masked_basket']
-        preds = list_of_top_n
+        user_id = row['customer_id']
+        preds = top_n_recommendations.get(user_id, [])  
 
         ndcg = ndcg_at_k(masked_basket, preds, original_basket)
 
         for k, ndcg_value in enumerate(ndcg, start=1):
             df.at[index, f'ndcg@{k}'] = ndcg_value
-
