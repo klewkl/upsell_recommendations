@@ -85,7 +85,7 @@ class Collab:
 
         return final_item_scores
 
-    def predict(self, user, basket, masked_basket=[], previously_predicted_items=set(), top_n=5):
+    def predict(self, user, basket, top_n=20):
         personal_scores = self.user_predictions(user, basket)
         neighbor_scores = {}
         for neighbor in self.user_neighbors.get(user, []):
@@ -115,8 +115,7 @@ class Collab:
             final_item_scores[item] += beta2 * (agg_neighbor_scores[item] / norm_term[item])
 
         # Exclude items in masked_basket and previously predicted items
-        filtered_item_scores = {item: score for item, score in final_item_scores.items()
-                                if item not in masked_basket and item not in previously_predicted_items}
+        filtered_item_scores = {item: score for item, score in final_item_scores.items()if item not in basket }
 
         sorted_item_scores = sorted(filtered_item_scores.items(), key=lambda x: x[1], reverse=True)
         predicted_items = [x[0] for x in sorted_item_scores[:top_n]]
